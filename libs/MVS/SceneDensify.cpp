@@ -668,6 +668,8 @@ bool DepthMapsData::EstimateDepthMap(IIndex idxImage)
 	depthData.depthMap.create(size); depthData.depthMap.memset(0);
 	depthData.normalMap.create(size);
 	depthData.confMap.create(size);
+	depthData.pointMap.create(size);
+	depthData.pointMap.setTo(255.0f);
 	const unsigned nMaxThreads(scene.nMaxThreads);
 
 	// initialize the depth-map
@@ -1367,6 +1369,7 @@ void DepthMapsData::FuseDepthMaps(PointCloud& pointcloud, bool bEstimateColor, b
 	typedef TImage<cuint32_t> DepthIndex;
 	typedef cList<DepthIndex> DepthIndexArr;
 	DepthIndexArr arrDepthIdx(scene.images.GetSize());
+	//DepthIndexArr arrDepthIdx(scene.images.GetSize());
 	ProjsArr projs(0, nPointsEstimate);
 	pointcloud.points.Reserve(nPointsEstimate);
 	pointcloud.pointViews.Reserve(nPointsEstimate);
@@ -1380,17 +1383,15 @@ void DepthMapsData::FuseDepthMaps(PointCloud& pointcloud, bool bEstimateColor, b
 	FOREACHPTR(pConnection, connections) {
 		TD_TIMER_STARTD();
 		const uint32_t idxImage(pConnection->idx);
-		const DepthData& depthData(arrDepthData[idxImage]);
+		DepthData& depthData(arrDepthData[idxImage]);
 		ASSERT(!depthData.images.IsEmpty() && !depthData.neighbors.IsEmpty());
 		for (const ViewScore& neighbor: depthData.neighbors) {
-			DepthIndex& depthIdxs = arrDepthIdx[neighbor.idx.ID];
-			if (!depthIdxs.empty())
-				continue;
-			const DepthData& depthDataB(arrDepthData[neighbor.idx.ID]);
-			if (depthDataB.IsEmpty())
-				continue;
-			depthIdxs.create(depthDataB.depthMap.size());
-			depthIdxs.memset((uint8_t)NO_ID);
+			const Image& imageData = scene.images[neighbor.idx.ID];
+			DepthIndex& depthIdxs = arrDepthIdx[&imageData-scene.images.Begin()];
+			if (depthIdxs.empty()) {
+				depthIdxs.create(Image8U::Size(imageData.width, imageData.height));
+				depthIdxs.memset((uint8_t)NO_ID);
+			}
 		}
 		ASSERT(!depthData.IsEmpty());
 		const Image8U::Size sizeMap(depthData.depthMap.size());
@@ -1402,6 +1403,10 @@ void DepthMapsData::FuseDepthMaps(PointCloud& pointcloud, bool bEstimateColor, b
 			depthIdxs.memset((uint8_t)NO_ID);
 		}
 		const size_t nNumPointsPrev(pointcloud.points.GetSize());
+
+		//Ourblock starts
+		std::cout << "Image name representative:" << imageData.name << std::endl;
+
 		for (int i=0; i<sizeMap.height; ++i) {
 			for (int j=0; j<sizeMap.width; ++j) {
 				const ImageRef x(j,i);
@@ -1409,6 +1414,7 @@ void DepthMapsData::FuseDepthMaps(PointCloud& pointcloud, bool bEstimateColor, b
 				if (depth == 0)
 					continue;
 				++nDepths;
+
 				ASSERT(ISINSIDE(depth, depthData.dMin, depthData.dMax));
 				uint32_t& idxPoint = depthIdxs(x);
 				if (idxPoint != NO_ID)
@@ -1433,14 +1439,13 @@ void DepthMapsData::FuseDepthMaps(PointCloud& pointcloud, bool bEstimateColor, b
 				invalidDepths.Empty();
 				FOREACHPTR(pNeighbor, depthData.neighbors) {
 					const IIndex idxImageB(pNeighbor->idx.ID);
-					DepthData& depthDataB = arrDepthData[idxImageB];
-					if (depthDataB.IsEmpty())
-						continue;
 					const Image& imageDataB = scene.images[idxImageB];
+					//std::cout << "Image name neighbor:" << imageDataB.name << std::endl;
 					const Point3f pt(imageDataB.camera.ProjectPointP3(point));
 					if (pt.z <= 0)
 						continue;
 					const ImageRef xB(ROUND2INT(pt.x/pt.z), ROUND2INT(pt.y/pt.z));
+					DepthData& depthDataB = arrDepthData[idxImageB];
 					DepthMap& depthMapB = depthDataB.depthMap;
 					if (!depthMapB.isInside(xB))
 						continue;
@@ -1489,6 +1494,22 @@ void DepthMapsData::FuseDepthMaps(PointCloud& pointcloud, bool bEstimateColor, b
 					pointcloud.pointViews.RemoveLast();
 					pointcloud.points.RemoveLast();
 				} else {
+					//Add the point
+					//const SEACAVE::TPoint3<float> pp = SEACAVE::TPoint3<float>(point);
+
+					//Add information to the pointmap
+					depthData.pointMap(x) = point;
+					//std::cout << point << std::endl;
+					FOREACH(v, views) {
+						const IIndex idxImageB(views[v]);
+						const ImageRef xV(pointProjs[v].GetCoord());
+						depthData.pointMap(xV);
+						//ASSERT(arrDepthIdx[idxImageB].isInside(x) && arrDepthIdx[idxImageB](x).idx != NO_ID);
+						//arrDepthIdx[idxImageB](x).idx = NO_ID;
+						DepthData& depthDataV(arrDepthData[idxImageB]);
+						depthDataV.pointMap(xV) = point; 
+					}
+					//depthData.pointMap.setTo(1.0f);
 					// this point is valid, store it
 					const REAL nrm(REAL(1)/confidence);
 					point = X*nrm;
@@ -1542,8 +1563,21 @@ void DepthMapsData::FuseDepthMaps(PointCloud& pointcloud, bool bEstimateColor, b
 
 	// release all depth-maps
 	FOREACHPTR(pDepthData, arrDepthData) {
-		if (pDepthData->IsValid())
+		if (pDepthData->IsValid()) {
+			/*if (g_nVerbosityLevel > 4) {
+				
+			}*/
+			//IIndex idxImage(0); //Because the images are stored in order of importance i'm assuming its the good one
+			IIndex idxImage = arrDepthData.GetIndex(pDepthData);
+
+			std::string realname = pDepthData->images[0].pImageData->name;
+			//Including print with realname exclusive for qopius later use
+			size_t lastindex = realname.find_last_of("."); 
+			std::string rawname = realname.substr(0, lastindex);
+			std::cout << "real filename: " << rawname+".pointmap.exr" << std::endl;
+			ExportPointMap(rawname+".pointmap.exr", pDepthData->pointMap); //Print pointmap after fusing
 			pDepthData->DecRef();
+		}
 	}
 } // FuseDepthMaps
 /*----------------------------------------------------------------*/
@@ -1864,7 +1898,12 @@ void Scene::DenseReconstructionEstimate(void* pData)
 			#if TD_VERBOSE != TD_VERBOSE_OFF
 			// save depth map as image
 			if (g_nVerbosityLevel > 2) {
-				ExportDepthMap(ComposeDepthFilePath(idx, "png"), depthData.depthMap);
+				std::string realname = depthData.images[0].pImageData->name;
+				//Including print with realname exclusive for qopius later use
+				size_t lastindex = realname.find_last_of("."); 
+				std::string rawname = realname.substr(0, lastindex);
+				std::cout << "real filename: " << rawname+".depth.png" << std::endl;
+				ExportDepthMap(rawname+".depth.png", depthData.depthMap);
 				ExportConfidenceMap(ComposeDepthFilePath(idx, "conf.png"), depthData.confMap);
 				ExportPointCloud(ComposeDepthFilePath(idx, "ply"), *depthData.images.First().pImageData, depthData.depthMap, depthData.normalMap);
 				if (g_nVerbosityLevel > 4) {

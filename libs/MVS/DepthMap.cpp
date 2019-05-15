@@ -1125,6 +1125,16 @@ bool MVS::SaveConfidenceMap(const String& fileName, const ConfidenceMap& confMap
 	ASSERT(!confMap.empty());
 	return SerializeSave(confMap, fileName, ARCHIVE_BINARY_ZIP);
 } // SaveConfidenceMap
+
+/*----------------------------------------------------------------*/
+
+// save the confidence map in our .cmap file format
+bool MVS::SavePointMap(const String& fileName, const PointMap& pointMap)
+{
+	ASSERT(!pointMap.empty());
+	return SerializeSave(pointMap, fileName, ARCHIVE_BINARY_ZIP);
+} // SavePointMap
+
 /*----------------------------------------------------------------*/
 // load the confidence map from our .cmap file format
 bool MVS::LoadConfidenceMap(const String& fileName, ConfidenceMap& confMap)
@@ -1220,6 +1230,35 @@ bool MVS::ExportConfidenceMap(const String& fileName, const ConfidenceMap& confM
 	}
 	return img.Save(fileName);
 } // ExportConfidenceMap
+
+
+/*----------------------------------------------------------------*/
+
+// export confidence map as an image (dark - low confidence, light - high confidence)
+bool MVS::ExportPointMap(const String& fileName, const PointMap& pointMap)
+{
+
+	std::cout << "Starting export of pointmap: " << fileName << std::endl;
+	if (pointMap.empty()) {
+		std::cout << "PointMap is empty " << std::endl;
+		return false;
+	}
+
+
+	Image32F3 img(pointMap.size());
+	for (int i=pointMap.area(); --i >= 0; ) {
+		img[i] = [](const Point& p) {
+			return 
+				Image32F3::Type(
+					p.x,
+					p.y,
+					p.z
+				);
+		} (pointMap[i]);
+	}
+	return img.Save(fileName);
+} // ExportPointMap
+
 /*----------------------------------------------------------------*/
 
 // export point cloud

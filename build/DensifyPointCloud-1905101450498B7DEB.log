@@ -1,0 +1,256 @@
+14:50:49 [App     ] Build date: May 10 2019, 14:47:22
+14:50:49 [App     ] CPU: Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz (8 cores)
+14:50:49 [App     ] RAM: 7.64GB Physical Memory 3.81GB Virtual Memory
+14:50:49 [App     ] OS: Linux 4.15.0-20-generic (x86_64)
+14:50:49 [App     ] SSE & AVX compatible CPU & OS detected
+14:50:49 [App     ] Command line: -i /data/work/output/qopius/lidl/5/scene.mvs -o /data/work/output/qopius/lidl/4/scene_dense.mvs --optimize 0 --resolution-level 2 -v 4 --number-views 0 --number-views-fuse 2
+14:50:49 [App     ] Camera model loaded: platform 0; camera  0; f 0.457x0.457; poses 10
+14:50:49 [App     ] Image loaded   0: 0_0_0_0_20190214T153014_411_376_127_88_top_415_375_382_421.jpg
+14:50:49 [App     ] Image loaded   1: 0_1_0_1_20190214T153014_411_376_127_88_bottom_415_375_382_421.jpg
+14:50:49 [App     ] Image loaded   2: 1_0_1_0_20190214T153021_405_386_125_90_top_415_375_382_421.jpg
+14:50:49 [App     ] Image loaded   3: 1_1_1_1_20190214T153021_405_386_125_90_bottom_415_375_382_421.jpg
+14:50:49 [App     ] Image loaded   4: 2_0_2_0_20190214T153028_398_395_125_91_top_415_375_382_421.jpg
+14:50:49 [App     ] Image loaded   5: 2_1_2_1_20190214T153028_398_395_125_91_bottom_415_375_382_421.jpg
+14:50:49 [App     ] Image loaded   6: 3_0_3_0_20190214T153034_391_405_125_90_top_415_375_382_421.jpg
+14:50:49 [App     ] Image loaded   7: 3_1_3_1_20190214T153034_391_405_125_90_bottom_415_375_382_421.jpg
+14:50:49 [App     ] Image loaded   8: 4_0_4_0_20190214T153041_384_415_125_94_top_415_375_382_421.jpg
+14:50:49 [App     ] Image loaded   9: 4_1_4_1_20190214T153041_384_415_125_94_bottom_415_375_382_421.jpg
+14:50:50 [App     ] Scene loaded from interface format (101ms):
+	10 images (10 calibrated) with a total of 170.86 MPixels (17.09 MPixels/image)
+	14560 points, 0 vertices, 0 faces
+14:50:50 [App     ] K0 = 
+  592.3089     0.0000   645.7247 
+    0.0000   592.3089   430.4971 
+    0.0000     0.0000     1.0000 
+
+14:50:50 [App     ] R0 = 
+    1.0000    -0.0029     0.0020 
+    0.0029     0.9999    -0.0127 
+   -0.0020     0.0127     0.9999 
+
+14:50:50 [App     ] C0 = 
+    0.0004 
+   -0.0312 
+    0.0032 
+
+14:50:50 [App     ] K1 = 
+  592.3089     0.0000   645.7247 
+    0.0000   592.3089   430.4971 
+    0.0000     0.0000     1.0000 
+
+14:50:50 [App     ] R1 = 
+    0.9999    -0.0022     0.0120 
+    0.0024     0.9999    -0.0149 
+   -0.0120     0.0150     0.9998 
+
+14:50:50 [App     ] C1 = 
+    0.3184 
+   -0.0373 
+   -0.0019 
+
+14:50:50 [App     ] K2 = 
+  592.3089     0.0000   645.7247 
+    0.0000   592.3089   430.4971 
+    0.0000     0.0000     1.0000 
+
+14:50:50 [App     ] R2 = 
+    1.0000    -0.0072     0.0014 
+    0.0072     0.9998     0.0194 
+   -0.0016    -0.0194     0.9998 
+
+14:50:50 [App     ] C2 = 
+   -0.0027 
+   -0.5195 
+   -0.0037 
+
+14:50:50 [App     ] K3 = 
+  592.3089     0.0000   645.7247 
+    0.0000   592.3089   430.4971 
+    0.0000     0.0000     1.0000 
+
+14:50:50 [App     ] R3 = 
+    0.9999    -0.0067     0.0117 
+    0.0065     0.9998     0.0171 
+   -0.0118    -0.0170     0.9998 
+
+14:50:50 [App     ] C3 = 
+    0.3153 
+   -0.5266 
+   -0.0092 
+
+14:50:50 [App     ] K4 = 
+  592.3089     0.0000   645.7247 
+    0.0000   592.3089   430.4971 
+    0.0000     0.0000     1.0000 
+
+14:50:50 [App     ] R4 = 
+    1.0000    -0.0089     0.0007 
+    0.0089     0.9996     0.0250 
+   -0.0010    -0.0250     0.9997 
+
+14:50:50 [App     ] C4 = 
+   -0.0063 
+   -0.9751 
+   -0.0072 
+
+14:50:50 [App     ] K5 = 
+  592.3089     0.0000   645.7247 
+    0.0000   592.3089   430.4971 
+    0.0000     0.0000     1.0000 
+
+14:50:50 [App     ] R5 = 
+    0.9999    -0.0085     0.0111 
+    0.0082     0.9997     0.0228 
+   -0.0113    -0.0227     0.9997 
+
+14:50:50 [App     ] C5 = 
+    0.3117 
+   -0.9814 
+   -0.0128 
+
+14:50:50 [App     ] K6 = 
+  592.3089     0.0000   645.7247 
+    0.0000   592.3089   430.4971 
+    0.0000     0.0000     1.0000 
+
+14:50:50 [App     ] R6 = 
+    0.9999    -0.0106    -0.0008 
+    0.0106     0.9996     0.0278 
+    0.0005    -0.0278     0.9996 
+
+14:50:50 [App     ] C6 = 
+   -0.0110 
+   -1.4367 
+   -0.0116 
+
+14:50:51 [App     ] K7 = 
+  592.3089     0.0000   645.7247 
+    0.0000   592.3089   430.4971 
+    0.0000     0.0000     1.0000 
+
+14:50:51 [App     ] R7 = 
+    0.9999    -0.0103     0.0092 
+    0.0101     0.9996     0.0259 
+   -0.0095    -0.0258     0.9996 
+
+14:50:51 [App     ] C7 = 
+    0.3068 
+   -1.4437 
+   -0.0180 
+
+14:50:51 [App     ] K8 = 
+  592.3089     0.0000   645.7247 
+    0.0000   592.3089   430.4971 
+    0.0000     0.0000     1.0000 
+
+14:50:51 [App     ] R8 = 
+    0.9999    -0.0144    -0.0006 
+    0.0144     0.9994     0.0320 
+    0.0001    -0.0320     0.9995 
+
+14:50:51 [App     ] C8 = 
+   -0.0173 
+   -1.8901 
+   -0.0197 
+
+14:50:51 [App     ] K9 = 
+  592.3089     0.0000   645.7247 
+    0.0000   592.3089   430.4971 
+    0.0000     0.0000     1.0000 
+
+14:50:51 [App     ] R9 = 
+    0.9999    -0.0137     0.0105 
+    0.0134     0.9994     0.0313 
+   -0.0109    -0.0312     0.9995 
+
+14:50:51 [App     ] C9 = 
+    0.3012 
+   -1.9008 
+   -0.0265 
+
+14:50:51 [App     ] Preparing images for dense reconstruction completed: 10 images (1s337ms)
+14:50:51 [App     ] Reference image   0 sees 7 views:   1(2285pts,1.01scl)   2(1505pts,1.01scl)   3(919pts,1.02scl)   4(534pts,1.00scl)   5(207pts,1.02scl)   8(47pts,1.00scl)   6(29pts,0.99scl) (3286 shared points)
+14:50:51 [App     ] Reference image   1 sees 7 views:   0(2285pts,0.99scl)   3(1358pts,1.01scl)   2(937pts,1.00scl)   5(277pts,1.01scl)   4(226pts,1.00scl)   7(1pts,1.01scl)   6(1pts,0.99scl) (3082 shared points)
+14:50:51 [App     ] Reference image   2 sees 8 views:   3(2641pts,1.01scl)   4(2528pts,0.99scl)   0(1505pts,0.99scl)   5(1211pts,1.00scl)   1(937pts,1.00scl)   6(752pts,0.98scl)   7(529pts,0.99scl)   8(79pts,1.00scl) (4865 shared points)
+14:50:51 [App     ] Reference image   3 sees 8 views:   2(2641pts,0.99scl)   5(1914pts,0.99scl)   1(1358pts,0.99scl)   4(1420pts,0.99scl)   0(919pts,0.98scl)   7(589pts,0.99scl)   6(495pts,0.98scl)   9(1pts,1.00scl) (4350 shared points)
+14:50:51 [App     ] Reference image   4 sees 9 views:   2(2528pts,1.01scl)   5(1832pts,1.01scl)   6(2166pts,0.99scl)   3(1420pts,1.01scl)   7(1219pts,1.00scl)   8(676pts,0.99scl)   0(534pts,1.00scl)   9(354pts,1.00scl)   1(226pts,1.00scl) (5064 shared points)
+14:50:51 [App     ] Reference image   5 sees 9 views:   4(1832pts,0.99scl)   3(1914pts,1.01scl)   7(1223pts,0.99scl)   2(1211pts,1.00scl)   6(800pts,0.98scl)   9(277pts,0.99scl)   1(277pts,0.99scl)   0(207pts,0.98scl)   8(157pts,0.98scl) (3360 shared points)
+14:50:51 [App     ] Reference image   6 sees 9 views:   7(2334pts,1.01scl)   4(2166pts,1.01scl)   8(1680pts,0.99scl)   5(800pts,1.02scl)   9(840pts,1.00scl)   2(752pts,1.02scl)   3(495pts,1.02scl)   0(29pts,1.01scl)   1(1pts,1.01scl) (4536 shared points)
+14:50:51 [App     ] Reference image   7 sees 8 views:   6(2334pts,0.99scl)   9(1562pts,0.99scl)   5(1223pts,1.01scl)   4(1219pts,1.00scl)   8(872pts,0.98scl)   3(589pts,1.01scl)   2(529pts,1.01scl)   1(1pts,0.99scl) (4051 shared points)
+14:50:51 [App     ] Reference image   8 sees 7 views:   6(1680pts,1.01scl)   9(1373pts,1.01scl)   7(872pts,1.02scl)   4(676pts,1.01scl)   5(157pts,1.02scl)   2(79pts,1.00scl)   0(47pts,1.00scl) (2720 shared points)
+14:50:51 [App     ] Reference image   9 sees 6 views:   7(1562pts,1.01scl)   8(1373pts,0.99scl)   6(840pts,1.00scl)   4(354pts,1.00scl)   5(277pts,1.01scl)   3(1pts,1.00scl) (2546 shared points)
+14:50:51 [App     ] Selecting images for dense reconstruction completed: 10 images (83ms)
+14:50:51 [App     ] Reference image   0 paired with 4 views:   1(1.01scl)   2(1.01scl)   3(1.02scl)   4(1.00scl) (3286 shared points)
+14:50:51 [App     ] Reference image   1 paired with 3 views:   0(0.99scl)   3(1.01scl)   2(1.00scl) (3082 shared points)
+14:50:51 [App     ] Depth-map   0 roughly estimated from 3286 sparse points: 1296x864 (26ms)
+14:50:58 [App     ] Depth-map for image   0 estimated using  4 images: 1296x864 (7s340ms)
+14:50:58 [App     ] 	depth range: [0.477655, 1.23551]
+14:50:58 [App     ] Depth-map   1 roughly estimated from 3082 sparse points: 1296x864 (17ms)
+14:50:58 [App     ] 	confidence range: [0.1, 69.7513]
+14:51:01 [App     ] Reference image   2 paired with 7 views:   3(1.01scl)   4(0.99scl)   0(0.99scl)   5(1.00scl)   1(1.00scl)   6(0.98scl)   7(0.99scl) (4865 shared points)
+14:51:05 [App     ] Depth-map for image   1 estimated using  3 images: 1296x864 (6s224ms)
+14:51:05 [App     ] 	depth range: [0.552762, 1.1123]
+14:51:05 [App     ] Depth-map   2 roughly estimated from 4865 sparse points: 1296x864 (20ms)
+14:51:05 [App     ] 	confidence range: [0.1, 99.2859]
+14:51:07 [App     ] Reference image   3 paired with 7 views:   2(0.99scl)   5(0.99scl)   1(0.99scl)   4(0.99scl)   0(0.98scl)   7(0.99scl)   6(0.98scl) (4350 shared points)
+14:51:16 [App     ] Depth-map for image   2 estimated using  7 images: 1296x864 (11s659ms)
+14:51:16 [App     ] 	depth range: [0.527772, 1.18577]
+14:51:16 [App     ] Depth-map   3 roughly estimated from 4350 sparse points: 1296x864 (18ms)
+14:51:16 [App     ] 	confidence range: [0.1, 83.9109]
+14:51:19 [App     ] Reference image   4 paired with 7 views:   2(1.01scl)   5(1.01scl)   6(0.99scl)   3(1.01scl)   7(1.00scl)   8(0.99scl)   0(1.00scl) (5064 shared points)
+14:51:26 [App     ] Depth-map for image   3 estimated using  7 images: 1296x864 (10s207ms)
+14:51:26 [App     ] 	depth range: [0.55711, 1.11069]
+14:51:27 [App     ] Depth-map   4 roughly estimated from 5064 sparse points: 1296x864 (21ms)
+14:51:27 [App     ] 	confidence range: [0.1, 120.175]
+14:51:29 [App     ] Reference image   5 paired with 6 views:   4(0.99scl)   3(1.01scl)   7(0.99scl)   2(1.00scl)   6(0.98scl)   9(0.99scl) (3360 shared points)
+14:51:39 [App     ] Depth-map for image   4 estimated using  7 images: 1296x864 (12s295ms)
+14:51:39 [App     ] 	depth range: [0.448107, 1.29432]
+14:51:39 [App     ] Depth-map   5 roughly estimated from 3360 sparse points: 1296x864 (17ms)
+14:51:39 [App     ] 	confidence range: [0.1, 82.7714]
+14:51:42 [App     ] Reference image   6 paired with 7 views:   7(1.01scl)   4(1.01scl)   8(0.99scl)   5(1.02scl)   9(1.00scl)   2(1.02scl)   3(1.02scl) (4536 shared points)
+14:51:48 [App     ] Depth-map for image   5 estimated using  6 images: 1296x864 (9s655ms)
+14:51:48 [App     ] 	depth range: [0.447587, 1.24467]
+14:51:48 [App     ] Depth-map   6 roughly estimated from 4536 sparse points: 1296x864 (15ms)
+14:51:49 [App     ] 	confidence range: [0.1, 115.47]
+14:51:51 [App     ] Reference image   7 paired with 7 views:   6(0.99scl)   9(0.99scl)   5(1.01scl)   4(1.00scl)   8(0.98scl)   3(1.01scl)   2(1.01scl) (4051 shared points)
+14:52:01 [App     ] Depth-map for image   6 estimated using  7 images: 1296x864 (12s87ms)
+14:52:01 [App     ] 	depth range: [0.374564, 1.4362]
+14:52:01 [App     ] Depth-map   7 roughly estimated from 4051 sparse points: 1296x864 (19ms)
+14:52:01 [App     ] 	confidence range: [0.1, 84.5546]
+14:52:03 [App     ] Reference image   8 paired with 4 views:   6(1.01scl)   9(1.01scl)   7(1.02scl)   4(1.01scl) (2720 shared points)
+14:52:11 [App     ] Depth-map for image   7 estimated using  7 images: 1296x864 (10s562ms)
+14:52:11 [App     ] 	depth range: [0.413291, 1.31562]
+14:52:11 [App     ] Depth-map   8 roughly estimated from 2720 sparse points: 1296x864 (12ms)
+14:52:11 [App     ] 	confidence range: [0.1, 101.976]
+14:52:14 [App     ] Reference image   9 paired with 5 views:   7(1.01scl)   8(0.99scl)   6(1.00scl)   4(1.00scl)   5(1.01scl) (2546 shared points)
+14:52:19 [App     ] Depth-map for image   8 estimated using  4 images: 1296x864 (8s84ms)
+14:52:19 [App     ] 	depth range: [0.1, 2.26525]
+14:52:19 [App     ] Depth-map   9 roughly estimated from 2546 sparse points: 1296x864 (12ms)
+14:52:19 [App     ] 	confidence range: [0.1, 59.4464]
+14:52:27 [App     ] Depth-map for image   9 estimated using  5 images: 1296x864 (8s244ms)
+14:52:28 [App     ] 	depth range: [0.1, 1.84516]
+14:52:28 [App     ] 	confidence range: [0.1, 60.3125]
+14:52:33 [App     ] Depths map for reference image   4 fused using 7 depths maps: 587177 new points (461ms)
+14:52:33 [App     ] Depths map for reference image   5 fused using 6 depths maps: 194816 new points (238ms)
+14:52:33 [App     ] Depths map for reference image   6 fused using 7 depths maps: 192959 new points (230ms)
+14:52:33 [App     ] Depths map for reference image   2 fused using 7 depths maps: 259267 new points (242ms)
+14:52:34 [App     ] Depths map for reference image   3 fused using 7 depths maps: 104306 new points (160ms)
+14:52:34 [App     ] Depths map for reference image   7 fused using 7 depths maps: 93686 new points (172ms)
+14:52:34 [App     ] Depths map for reference image   0 fused using 4 depths maps: 155975 new points (158ms)
+14:52:34 [App     ] Depths map for reference image   1 fused using 3 depths maps: 19813 new points (112ms)
+14:52:34 [App     ] Depths map for reference image   8 fused using 4 depths maps: 107513 new points (217ms)
+14:52:34 [App     ] Depths map for reference image   9 fused using 5 depths maps: 17282 new points (120ms)
+14:52:34 [App     ] Depth-maps fused and filtered: 10 depth-maps, 10054484 depths, 1732794 points (17%%) (5s646ms)
+14:52:38 [App     ] Dense point-cloud composed of:
+	0 points with 1- views
+	1037544 points with 2 views
+	695250 points with 3+ views
+14:52:38 [App     ] Densifying point-cloud completed: 1732794 points (1m48s457ms)
+14:52:40 [App     ] Scene saved (2s337ms):
+	10 images (10 calibrated)
+	1732794 points, 0 vertices, 0 faces
+14:52:41 [App     ] Point-cloud saved: 1732794 points (159ms)
+14:52:41 [App     ] MEMORYINFO: {
+14:52:41 [App     ] 	VmPeak:	 1619176 kB
+14:52:41 [App     ] 	VmSize:	 1575432 kB
+14:52:41 [App     ] } ENDINFO

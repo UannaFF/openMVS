@@ -11,7 +11,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.1.0)
 # as ${OpenMVS_SOURCE_DIR} and to the root binary directory as
 # ${OpenMVS_BINARY_DIR}.
 PROJECT(OpenMVS)
-
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -isystem -Wignored-attributes -Wall -Wextra")
 set(OpenMVS_MAJOR_VERSION 0)
 set(OpenMVS_MINOR_VERSION 7)
 set(OpenMVS_PATCH_VERSION 0)
@@ -38,6 +38,8 @@ GetOperatingSystemArchitectureBitness(SYSTEM)
 ComposePackageLibSuffix()
 ConfigCompilerAndLinker()
 ConfigLibrary()
+
+set_property(GLOBAL PROPERTY LINK_FLAGS "/ignore:4099")
 
 # List configuration options
 SET(OpenMVS_USE_NONFREE ON CACHE BOOL "Build non-free (patented) functionality")
@@ -201,3 +203,10 @@ configure_file(
 
 add_custom_target(uninstall
 	COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
+
+#Compiling the python script with the accurate paths for openMVS
+set(OPENMVS_SRC_DIR ${CMAKE_CURRENT_LIST_DIR})
+set(OPENMVS_BUILD_DIR ${EXECUTABLE_OUTPUT_PATH})
+set(OPENMVS_PIPELINE_IN_FILE "${CMAKE_CURRENT_LIST_DIR}/OpenMVS_Pipeline.py.in")
+configure_file(${OPENMVS_PIPELINE_IN_FILE}
+    "${CMAKE_CURRENT_BINARY_DIR}/OpenMVS_Pipeline.py" @ONLY)

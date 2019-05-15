@@ -167,6 +167,7 @@ struct MVS_API DepthData {
 	DepthMap depthMap; // depth-map
 	NormalMap normalMap; // normal-map in camera space
 	ConfidenceMap confMap; // confidence-map
+	PointMap pointMap;
 	float dMin, dMax; // global depth range for this image
 	unsigned references; // how many times this depth-map is referenced (on 0 can be safely unloaded)
 	CriticalSection cs; // used to count references
@@ -181,6 +182,7 @@ struct MVS_API DepthData {
 		depthMap.release();
 		normalMap.release();
 		confMap.release();
+		pointMap.release();
 	}
 
 	inline bool IsValid() const {
@@ -208,6 +210,7 @@ struct MVS_API DepthData {
 		ar & depthMap;
 		ar & normalMap;
 		ar & confMap;
+		ar & pointMap;
 		ar & dMin;
 		ar & dMax;
 	}
@@ -456,11 +459,13 @@ MVS_API bool SaveNormalMap(const String& fileName, const NormalMap& normalMap);
 MVS_API bool LoadNormalMap(const String& fileName, NormalMap& normalMap);
 MVS_API bool SaveConfidenceMap(const String& fileName, const ConfidenceMap& confMap);
 MVS_API bool LoadConfidenceMap(const String& fileName, ConfidenceMap& confMap);
+MVS_API bool SavePointMap(const String& fileName, const PointMap& pointMap);
 
 MVS_API bool ExportDepthMap(const String& fileName, const DepthMap& depthMap, Depth minDepth=FLT_MAX, Depth maxDepth=0);
 MVS_API bool ExportNormalMap(const String& fileName, const NormalMap& normalMap);
 MVS_API bool ExportConfidenceMap(const String& fileName, const ConfidenceMap& confMap);
 MVS_API bool ExportPointCloud(const String& fileName, const Image&, const DepthMap&, const NormalMap&);
+MVS_API bool ExportPointMap(const String& fileName, const PointMap& pointMap);
 
 MVS_API void CompareDepthMaps(const DepthMap& depthMap, const DepthMap& depthMapGT, uint32_t idxImage, float threshold=0.01f);
 MVS_API void CompareNormalMaps(const NormalMap& normalMap, const NormalMap& normalMapGT, uint32_t idxImage);

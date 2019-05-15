@@ -112,12 +112,15 @@ public:
 
 typedef MVS_API float Depth;
 typedef MVS_API Point3f Normal;
+typedef MVS_API Point3f Point;
 typedef MVS_API TImage<Depth> DepthMap;
 typedef MVS_API TImage<Normal> NormalMap;
 typedef MVS_API TImage<float> ConfidenceMap;
+typedef MVS_API TImage<Point> PointMap;
 typedef MVS_API SEACAVE::cList<Depth,Depth,0> DepthArr;
 typedef MVS_API SEACAVE::cList<DepthMap,const DepthMap&,2> DepthMapArr;
 typedef MVS_API SEACAVE::cList<NormalMap,const NormalMap&,2> NormalMapArr;
+typedef MVS_API SEACAVE::cList<PointMap, PointMap&,2> PointMapArr;
 typedef MVS_API SEACAVE::cList<ConfidenceMap,const ConfidenceMap&,2> ConfidenceMapArr;
 /*----------------------------------------------------------------*/
 

@@ -8,7 +8,7 @@ FILE(GLOB LIBRARY_FILES_H "*.h" "*.inl")
 cxx_executable_with_flags_no_pch(InterfaceCOLMAP "Apps" "${cxx_default}" "MVS" ${LIBRARY_FILES_C} ${LIBRARY_FILES_H})
 
 if(3Dnovator_USE_BREAKPAD AND BREAKPAD_FOUND)
-	target_link_libraries(InterfaceCOLMAP ${BREAKPAD_LIBS})
+	target_link_libraries(InterfaceCOLMAP PRIVATE ${BREAKPAD_LIBS})
 endif()
 
 # Install
