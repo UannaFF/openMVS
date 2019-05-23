@@ -18,10 +18,10 @@
 #
 
 # Indicate the openMVG binary directory
-OPENMVS_BIN = "/home/anigomez/work/openMVS/build/bin"
+OPENMVS_BIN = "/home/ubuntu/anna/forks/openMVS/build/bin"
 
 # Indicate the openMVG camera sensor width directory
-#CAMERA_SENSOR_WIDTH_DIRECTORY = "/home/anigomez/work/openMVS" + "/../../openMVG/exif/sensor_width_database"
+#CAMERA_SENSOR_WIDTH_DIRECTORY = "/home/ubuntu/anna/forks/openMVS" + "/../../openMVG/exif/sensor_width_database"
 
 import os
 import subprocess

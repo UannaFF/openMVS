@@ -11,7 +11,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.1.0)
 # as ${OpenMVS_SOURCE_DIR} and to the root binary directory as
 # ${OpenMVS_BINARY_DIR}.
 PROJECT(OpenMVS)
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -isystem -Wignored-attributes -Wall -Wextra")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -isystem -Wall -Wextra")
 set(OpenMVS_MAJOR_VERSION 0)
 set(OpenMVS_MINOR_VERSION 7)
 set(OpenMVS_PATCH_VERSION 0)
